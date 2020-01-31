@@ -6,7 +6,7 @@
 /*   By: nhochstr <nhochstr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:25:33 by nhochstr          #+#    #+#             */
-/*   Updated: 2020/01/27 13:35:20 by nhochstr         ###   ########.fr       */
+/*   Updated: 2020/01/31 10:14:02 by nhochstr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,19 @@ int		ft_resetbuffer(char **buff, int endline, int fd, char **line)
 	return (reset);
 }
 
+int		ft_returnfreebuff(int endline, char *buff)
+{
+	if (endline == 4)
+	{
+		if (buff)
+			free(buff);
+		return (0);
+	}
+	if (buff)
+		free(buff);
+	return (-1);
+}
+
 int		get_next_line(int fd, char **line)
 {
 	static char	*buff = NULL;
@@ -65,9 +78,9 @@ int		get_next_line(int fd, char **line)
 			return (-1);
 		endline = ft_get_line(buff, line, reset);
 		if (endline == 4)
-			return (0);
+			return (ft_returnfreebuff(endline, buff));
 	}
 	if (endline == 0)
-		return (-1);
+		return (ft_returnfreebuff(endline, buff));
 	return (1);
 }
