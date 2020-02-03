@@ -6,7 +6,7 @@
 /*   By: nhochstr <nhochstr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:25:33 by nhochstr          #+#    #+#             */
-/*   Updated: 2020/02/03 16:45:45 by nhochstr         ###   ########.fr       */
+/*   Updated: 2020/02/03 16:55:36 by nhochstr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,21 @@ int		ft_resetbuffer(char **buff, int endline, int fd, char **line)
 	return (reset);
 }
 
-int		ft_returnfreebuff(int endline, char *buff)
+int		ft_returnfreebuff(int endline, char **buff)
 {
 	if (endline == 4)
 	{
-		if (buff)
+		if (*buff)
 		{
-			free(buff);
-			buff = NULL;
+			free(*buff);
+			*buff = NULL;
 		}
 		return (0);
 	}
-	if (buff)
+	if (*buff)
 	{
-		free(buff);
-		buff = NULL;
+		free(*buff);
+		*buff = NULL;
 	}
 	return (-1);
 }
@@ -78,7 +78,7 @@ int		get_next_line(int fd, char **line)
 	int			endline;
 	int			reset;
 
-	if (BUFFER_SIZE < 1)
+	if (BUFFER_SIZE < 1 || fd < 0 || line == NULL)
 		return (-1);
 	endline = 0;
 	if (!buff)
@@ -93,9 +93,9 @@ int		get_next_line(int fd, char **line)
 			return (-1);
 		endline = ft_get_line(buff, line, reset);
 		if (endline == 4)
-			return (ft_returnfreebuff(endline, buff));
+			return (ft_returnfreebuff(endline, &buff));
 	}
 	if (endline == 0)
-		return (ft_returnfreebuff(endline, buff));
+		return (ft_returnfreebuff(endline, &buff));
 	return (1);
 }
