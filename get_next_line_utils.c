@@ -6,7 +6,7 @@
 /*   By: nhochstr <nhochstr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:25:15 by nhochstr          #+#    #+#             */
-/*   Updated: 2020/02/03 16:14:50 by nhochstr         ###   ########.fr       */
+/*   Updated: 2020/02/03 16:36:23 by nhochstr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char			*ft_del_return_line(char *str)
 		i++;
 	}
 	ptr[i] = '\0';
-	ft_freeptr(&str);
+	free(str);
 	return (ptr);
 }
 
@@ -88,7 +88,7 @@ char			*ft_join(char *s1, char *s2)
 		j++;
 	}
 	ptr[i + j] = '\0';
-	ft_freeptr(&s1);
+	free(s1);
 	return (ptr);
 }
 
