@@ -6,7 +6,7 @@
 /*   By: nhochstr <nhochstr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:25:07 by nhochstr          #+#    #+#             */
-/*   Updated: 2020/02/03 16:17:47 by nhochstr         ###   ########.fr       */
+/*   Updated: 2020/02/03 16:42:24 by nhochstr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,5 @@ int				ft_resetbuleffer(char **buff, int endline, int fd, char **line);
 char			*ft_del_return_line(char *str);
 char			*ft_strdup(char *s);
 int				ft_returnfreebuff(int endline, char *buff);
-void			ft_freeptr(char **ptr);
 
 #endif

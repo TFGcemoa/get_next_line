@@ -6,7 +6,7 @@
 /*   By: nhochstr <nhochstr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:25:15 by nhochstr          #+#    #+#             */
-/*   Updated: 2020/02/03 16:36:23 by nhochstr         ###   ########.fr       */
+/*   Updated: 2020/02/03 16:42:31 by nhochstr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,11 +123,18 @@ int				ft_get_line(char *buff, char **line, int reset)
 
 	i = 0;
 	if (reset > 0 && save)
-		ft_freeptr(&save);
+	{
+		free(save);
+		save = NULL;
+	}
 	if (buff[0] == '\0' && !save)
 	{
 		*line = (reset == 2) ? *line : ft_strdup("\0");
-		ft_freeptr(&save);
+		if (save)
+		{
+			free(save);
+			save = NULL;
+		}
 		return (4);
 	}
 	while (save && save[i] == buff[i] && buff[i] != '\0')
