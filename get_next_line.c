@@ -6,7 +6,7 @@
 /*   By: nhochstr <nhochstr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:25:33 by nhochstr          #+#    #+#             */
-/*   Updated: 2020/02/03 16:42:25 by nhochstr         ###   ########.fr       */
+/*   Updated: 2020/02/03 16:45:45 by nhochstr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include "get_next_line.h"
+
+void fr_freeptr(char **ptr)
+{
+	if (*ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+	}
+}
 
 void	ft_bzero(void *s, size_t n)
 {
