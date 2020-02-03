@@ -6,7 +6,7 @@
 /*   By: nhochstr <nhochstr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:25:33 by nhochstr          #+#    #+#             */
-/*   Updated: 2020/02/03 15:59:23 by nhochstr         ###   ########.fr       */
+/*   Updated: 2020/02/03 16:18:27 by nhochstr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 #include <fcntl.h>
 #include "get_next_line.h"
 
-void	ft_freeptr(char *ptr)
+void	ft_freeptr(char **ptr)
 {
-	if (ptr)
+	if (*ptr)
 	{
-		ptr = NULL;
-		free(ptr);
+		*ptr = NULL;
+		free(*ptr);
 	}
 }
 
@@ -59,13 +59,16 @@ int		ft_returnfreebuff(int endline, char *buff)
 	{
 		if (buff)
 		{
-			free(buff);
 			buff = NULL;
+			free(buff);
 		}
 		return (0);
 	}
 	if (buff)
+	{
+		buff = NULL;
 		free(buff);
+	}
 	return (-1);
 }
 
