@@ -6,7 +6,7 @@
 /*   By: nhochstr <nhochstr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:25:33 by nhochstr          #+#    #+#             */
-/*   Updated: 2020/02/03 15:42:49 by nhochstr         ###   ########.fr       */
+/*   Updated: 2020/02/03 15:59:23 by nhochstr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,13 @@ int		ft_returnfreebuff(int endline, char *buff)
 	{
 		if (buff)
 		{
-			buff = NULL;
 			free(buff);
+			buff = NULL;
 		}
 		return (0);
 	}
 	if (buff)
-	{
-		buff = NULL;
 		free(buff);
-	}
 	return (-1);
 }
 
